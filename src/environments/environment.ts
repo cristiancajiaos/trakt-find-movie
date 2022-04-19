@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://api.trakt.tv',
+  clientId: 'afedb303c192ec5402f8f7506a9e610a46881b369eb04c5c5e6093b9f27f005a',
 };
 
 /*
