@@ -1,3 +1,4 @@
+import { MovieService } from './movie.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
@@ -13,7 +14,8 @@ export class LayoutComponent implements OnInit {
   searchForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private movie: MovieService
   ) { }
 
   ngOnInit(): void {
@@ -23,11 +25,13 @@ export class LayoutComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.searchForm.value.input);
+    this.movie.searchMovieByQuery(this.searchForm.value.input).subscribe(result => {
+      this.result = JSON.stringify(result);
+    });
   }
 
   reset(): void {
-    console.log('reset()');
+    this.result = '';
   }
 
 }
